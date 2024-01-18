@@ -1,0 +1,17 @@
+   
+            <div class="sidebar" id="yearLevelLinks">
+                <!-- Year level links will be dynamically added here -->
+        
+                <a href={% url 'home' %}><i class="fa fa-fw fa-home"></i> Home</a>
+                <a href={% url 'login_user' %}><i class="fa fa-fw fa-user"></i> Login</a>
+                <a href="https://www.normi.edu.ph/"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+                <h2>Rate for Year Level: {{ year_level }}</h2>
+                <a href="{% url 'rate' year_level=1 %}"><i class="fa fa-fw fa-star"></i> Rate First Year</a>
+                <a href="{% url 'rate' year_level=2 %}"><i class="fa fa-fw fa-star"></i> Rate Second Year</a>
+                <a href="{% url 'rate' year_level=3 %}"><i class="fa fa-fw fa-star"></i> Rate Third Year</a>
+                <a href="{% url 'rate' year_level=4 %}"><i class="fa fa-fw fa-star"></i> Rate Fourth Year</a>
+
+              </div>
+              
+
+              

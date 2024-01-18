@@ -1,0 +1,85 @@
+{% extends 'partials/base.html' %}
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+  {% if user.is_authenticated and user.is_staff and user.is_superuser %}
+    <div class="row">
+      <div class="col-md-4 mt-4">
+        <div class="card">
+          <div class="card-header bg-info text-white">
+            Information
+          </div>
+          <div class="card-body">
+            <marquee behavior="" direction="">
+              <h3 class="my-4">New Northern Mindanao Colleges Inc.</h3>
+            </marquee>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 mt-4">
+        <div class="card">
+          <div class="card-header bg-info text-white">
+            Question and Answer details
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <form method="GET" action="" id="searchYearLevelForm">
+                <div class="form-group">
+                  <label for="searchYearLevel">Search Year Level:</label>
+                  <input type="text" class="form-control" id="searchYearLevel" name="searchYearLevel" placeholder="Enter year level">
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+              </form>
+
+              <table class="table table-striped" id="yearLevelTable">
+                <thead>
+                  <tr>
+                    <th>Year level</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for c in year_level %}
+                    <tr>
+                      <td>{{ c.year_level }}</td>
+                      <td><a href="/levelView/{{ c.year_level }}" class="btn btn-info">View</a></td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // JavaScript for live search on Year Level table
+      document.addEventListener('DOMContentLoaded', function () {
+        const searchYearLevelForm = document.getElementById('searchYearLevelForm');
+        const searchYearLevelInput = document.getElementById('searchYearLevel');
+        const yearLevelTable = document.getElementById('yearLevelTable').getElementsByTagName('tbody')[0];
+
+        searchYearLevelForm.addEventListener('submit', function (event) {
+          event.preventDefault();
+          updateYearLevelTable(searchYearLevelInput.value.trim().toLowerCase());
+        });
+
+        searchYearLevelInput.addEventListener('input', function () {
+          updateYearLevelTable(searchYearLevelInput.value.trim().toLowerCase());
+        });
+
+        function updateYearLevelTable(searchTerm) {
+          const rows = yearLevelTable.getElementsByTagName('tr');
+          for (let i = 0; i < rows.length; i++) {
+            const yearLevel = rows[i].getElementsByTagName('td')[0].innerText.toLowerCase();
+            rows[i].style.display = yearLevel.includes(searchTerm) ? '' : 'none';
+          }
+        }
+      });
+    </script>
+
+  {% else %}
+    {% include 'dashboard_index.html' %}
+  {% endif %}
+{% endblock %}

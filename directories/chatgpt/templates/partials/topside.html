@@ -1,0 +1,91 @@
+<div class="row">
+    <div class="col-md-4 mt-4">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                Information
+            </div>
+            <div class="card-body">
+                <marquee behavior="" direction="">
+                    <h3 class="my-4">New Northern Mindanao Colleges Inc.</h3>
+                </marquee>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 mt-4">
+        <div class="card">
+            
+            <div class="card-header bg-info text-white">
+                Dashboard Statistics
+
+            </div> 
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'feedback' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h5><a href={% url 'feedback' %}>Feedback</a></h5>
+                                    <h3>{{ customer_count }}</h3>
+                                    <i class="fa fa-tasks"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+            
+                    <div class="col-md-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'level' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h5><a href={% url 'level' %}>Year Level</a></h5>
+                                    <h3>{{ customer_count }}</h3>
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+            
+                    <div class="col-md-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'course' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h5><a href={% url 'course' %}>Course</a></h5>
+                                    <h3>{{ product_count }}</h3>
+                                    <i class="fas fa-box"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+            
+                    <div class="col-md-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'chart' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h5><a href="{% url 'chart' %}">Questions</a></h5>
+                                    <h3>{{ product_count }}</h3>
+                                    <i class="fas fa-question"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            
+                    <div class="col-md-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'qanda' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h5><a href={% url 'qanda' %}>Category</a></h5>
+                                    <i class="fas fa-list-alt"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <br>
+        Total Question: {{total}}
+        </div>
+    </div>
+</div>
